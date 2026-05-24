@@ -1,0 +1,118 @@
+name: Build IndOS ISO
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  build:
+    name: Build ISO
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            live-build debootstrap squashfs-tools xorriso \
+            isolinux syslinux-common grub-pc-bin grub-efi-amd64-bin \
+            mtools dosfstools rsync ca-certificates curl jq
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Install syft (SBOM generator)
+        uses: anchore/sbom-action/download-syft@v0
+
+      - name: Build ISO
+        id: build
+        run: |
+          set -euo pipefail
+          chmod +x ./build.sh 2>/dev/null || true
+          if [ -x ./build.sh ]; then
+            ./build.sh
+          else
+            sudo lb config
+            sudo lb build
+          fi
+          ISO=$(ls -1 *.iso indos-*.iso 2>/dev/null | head -n1)
+          if [ -z "$ISO" ]; then
+            echo "No ISO produced" >&2
+            exit 1
+          fi
+          VERSION="${GITHUB_REF_NAME#v}"
+          NEW_NAME="indos-${VERSION}-amd64.iso"
+          mv "$ISO" "$NEW_NAME"
+          echo "iso=$NEW_NAME" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Generate SHA256SUMS
+        run: sha256sum "${{ steps.build.outputs.iso }}" | tee SHA256SUMS
+
+      - name: Generate SBOMs (SPDX + CycloneDX)
+        run: |
+          syft "${{ steps.build.outputs.iso }}" -o spdx-json > indos-${{ steps.build.outputs.version }}.spdx.json
+          syft "${{ steps.build.outputs.iso }}" -o cyclonedx-json > indos-${{ steps.build.outputs.version }}.cdx.json
+
+      - name: Sign ISO and SHA256SUMS with cosign (keyless)
+        env:
+          COSIGN_EXPERIMENTAL: "1"
+        run: |
+          cosign sign-blob --yes \
+            --output-signature "${{ steps.build.outputs.iso }}.sig" \
+            --output-certificate "${{ steps.build.outputs.iso }}.pem" \
+            "${{ steps.build.outputs.iso }}"
+          cosign sign-blob --yes \
+            --output-signature SHA256SUMS.sig \
+            --output-certificate SHA256SUMS.pem \
+            SHA256SUMS
+
+      - name: Generate SLSA build attestation
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: ${{ steps.build.outputs.iso }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: indos-${{ steps.build.outputs.version }}
+          path: |
+            ${{ steps.build.outputs.iso }}
+            ${{ steps.build.outputs.iso }}.sig
+            ${{ steps.build.outputs.iso }}.pem
+            SHA256SUMS
+            SHA256SUMS.sig
+            SHA256SUMS.pem
+            indos-${{ steps.build.outputs.version }}.spdx.json
+            indos-${{ steps.build.outputs.version }}.cdx.json
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: IndOS ${{ steps.build.outputs.version }}
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true
+          files: |
+            ${{ steps.build.outputs.iso }}
+            ${{ steps.build.outputs.iso }}.sig
+            ${{ steps.build.outputs.iso }}.pem
+            SHA256SUMS
+            SHA256SUMS.sig
+            SHA256SUMS.pem
+            indos-${{ steps.build.outputs.version }}.spdx.json
+            indos-${{ steps.build.outputs.version }}.cdx.json

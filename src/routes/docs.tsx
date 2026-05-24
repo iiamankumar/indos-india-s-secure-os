@@ -67,7 +67,7 @@ ollama pull llama3`}</code></pre>
     body: (
       <>
         <p>Clone the repo, install Cubic on Ubuntu 24.04, run the build script. GitHub Actions also builds nightly ISOs automatically.</p>
-        <pre className="mt-3 p-4 rounded-lg bg-foreground text-background text-xs font-mono overflow-x-auto"><code>{`git clone https://github.com/iiamankumar/IndOS.git
+        <pre className="mt-3 p-4 rounded-lg bg-foreground text-background text-xs font-mono overflow-x-auto"><code>{`git clone https://github.com/iiamankumar/indos-india-s-secure-os.git
 cd IndOS
 ./scripts/build-iso.sh`}</code></pre>
       </>

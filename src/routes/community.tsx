@@ -27,9 +27,9 @@ function Community() {
 
       <section className="max-w-5xl mx-auto px-5 sm:px-8 py-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Channel icon={MessageCircle} name="Telegram" desc="Real-time chat. Daily bug reports. Direct line to maintainers." url="https://t.me/" />
-        <Channel icon={Github} name="GitHub" desc="Source, issues, pull requests, nightly ISO releases." url="https://github.com/iiamankumar/IndOS" />
-        <Channel icon={Users} name="Forum" desc="Long-form help, translations, hardware compatibility." url="https://github.com/iiamankumar/IndOS/discussions" />
-        <Channel icon={Heart} name="Translate" desc="Help bring IndOS to your mother tongue. Web-based, no coding." url="https://github.com/iiamankumar/IndOS" />
+        <Channel icon={Github} name="GitHub" desc="Source, issues, pull requests, nightly ISO releases." url="https://github.com/iiamankumar/indos-india-s-secure-os" />
+        <Channel icon={Users} name="Forum" desc="Long-form help, translations, hardware compatibility." url="https://github.com/iiamankumar/indos-india-s-secure-os/discussions" />
+        <Channel icon={Heart} name="Translate" desc="Help bring IndOS to your mother tongue. Web-based, no coding." url="https://github.com/iiamankumar/indos-india-s-secure-os" />
       </section>
 
       <section className="max-w-5xl mx-auto px-5 sm:px-8 py-16">

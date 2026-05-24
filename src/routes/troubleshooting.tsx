@@ -99,7 +99,7 @@ function TroubleshootingPage() {
             Share your laptop model, the IndOS edition you installed, and the exact error message — we’ll help.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href="https://github.com/iiamankumar/IndOS/issues/new" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-accent text-accent-foreground font-semibold hover:opacity-90">
+            <a href="https://github.com/iiamankumar/indos-india-s-secure-os/issues/new" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-accent text-accent-foreground font-semibold hover:opacity-90">
               <Github size={16} /> Open a GitHub issue
             </a>
             <Link to="/contact" className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-border bg-background font-semibold hover:bg-muted">

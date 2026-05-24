@@ -90,7 +90,7 @@ function SecurityPage() {
             </div>
             <div className="p-5 rounded-lg border border-border bg-background">
               <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">GitHub Security Advisory</p>
-              <a href="https://github.com/iiamankumar/IndOS/security/advisories/new" target="_blank" rel="noreferrer" className="text-sm text-accent hover:underline inline-flex items-center gap-1.5">
+              <a href="https://github.com/iiamankumar/indos-india-s-secure-os/security/advisories/new" target="_blank" rel="noreferrer" className="text-sm text-accent hover:underline inline-flex items-center gap-1.5">
                 <Github size={14} /> Open a private advisory
               </a>
               <p className="text-xs text-muted-foreground mt-3">Please do not disclose publicly until we’ve shipped a fix.</p>
@@ -111,19 +111,19 @@ function SecurityPage() {
             <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">SBOM · SPDX 2.3</div>
             <h3 className="text-lg font-semibold mb-2">indos-1.0.spdx.json</h3>
             <p className="text-sm text-muted-foreground mb-4">Full package inventory in SPDX format. Every binary on the ISO, with version, license, supplier, and download location.</p>
-            <a href="https://github.com/iiamankumar/IndOS/releases/download/v1.0/indos-1.0.spdx.json" target="_blank" rel="noreferrer" className="text-sm text-accent hover:underline">↓ Download SPDX SBOM</a>
+            <a href="https://github.com/iiamankumar/indos-india-s-secure-os/releases/download/v1.0/indos-1.0.spdx.json" target="_blank" rel="noreferrer" className="text-sm text-accent hover:underline">↓ Download SPDX SBOM</a>
           </div>
           <div className="p-7 rounded-xl border border-border bg-card">
             <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">SBOM · CycloneDX 1.5</div>
             <h3 className="text-lg font-semibold mb-2">indos-1.0.cdx.json</h3>
             <p className="text-sm text-muted-foreground mb-4">Same inventory in CycloneDX format — feeds directly into Dependency-Track, Grype, OSV-Scanner and Trivy.</p>
-            <a href="https://github.com/iiamankumar/IndOS/releases/download/v1.0/indos-1.0.cdx.json" target="_blank" rel="noreferrer" className="text-sm text-accent hover:underline">↓ Download CycloneDX SBOM</a>
+            <a href="https://github.com/iiamankumar/indos-india-s-secure-os/releases/download/v1.0/indos-1.0.cdx.json" target="_blank" rel="noreferrer" className="text-sm text-accent hover:underline">↓ Download CycloneDX SBOM</a>
           </div>
           <div className="p-7 rounded-xl border border-border bg-card">
             <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Provenance · SLSA Level 3</div>
             <h3 className="text-lg font-semibold mb-2">in-toto attestation</h3>
             <p className="text-sm text-muted-foreground mb-4">Signed provenance produced by the GitHub Actions builder. Proves the ISO came from a specific source commit with no human in the loop.</p>
-            <a href="https://github.com/iiamankumar/IndOS/attestations" target="_blank" rel="noreferrer" className="text-sm text-accent hover:underline">View attestations →</a>
+            <a href="https://github.com/iiamankumar/indos-india-s-secure-os/attestations" target="_blank" rel="noreferrer" className="text-sm text-accent hover:underline">View attestations →</a>
           </div>
           <div className="p-7 rounded-xl border border-border bg-card">
             <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Signatures · Sigstore + GPG</div>
@@ -135,7 +135,7 @@ function SecurityPage() {
 
         <div className="mt-6 p-6 rounded-xl border border-border bg-card">
           <p className="text-sm font-semibold mb-3">Verify everything with one command:</p>
-          <pre className="p-4 rounded-lg bg-foreground text-background text-xs font-mono overflow-x-auto"><code># Hash + GPG + SLSA attestation in one go{"\n"}curl -fsSL https://indos.org/verify-indos.sh | bash -s IndOS-1.0-gnome-amd64.iso{"\n\n"}# Scan the SBOM for known CVEs{"\n"}grype sbom:indos-1.0.cdx.json{"\n\n"}# Verify provenance directly with cosign{"\n"}cosign verify-blob-attestation \{"\n"}  --certificate-identity-regexp "https://github.com/iiamankumar/IndOS/.*" \{"\n"}  --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \{"\n"}  --type slsaprovenance IndOS-1.0-gnome-amd64.iso</code></pre>
+          <pre className="p-4 rounded-lg bg-foreground text-background text-xs font-mono overflow-x-auto"><code># Hash + GPG + SLSA attestation in one go{"\n"}curl -fsSL https://indos.org/verify-indos.sh | bash -s IndOS-1.0-gnome-amd64.iso{"\n\n"}# Scan the SBOM for known CVEs{"\n"}grype sbom:indos-1.0.cdx.json{"\n\n"}# Verify provenance directly with cosign{"\n"}cosign verify-blob-attestation \{"\n"}  --certificate-identity-regexp "https://github.com/iiamankumar/indos-india-s-secure-os/.*" \{"\n"}  --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \{"\n"}  --type slsaprovenance IndOS-1.0-gnome-amd64.iso</code></pre>
         </div>
       </section>
     </SiteLayout>

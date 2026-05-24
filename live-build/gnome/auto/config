@@ -17,7 +17,6 @@ lb config noauto \
     --binary-images iso-hybrid \
     --architectures amd64 \
     --linux-flavours generic \
-    --bootloaders "syslinux,grub-efi" \
     --iso-application "IndOS" \
     --iso-publisher "IndOS Project; https://indos.org; press@indos.org" \
     --iso-volume "IndOS GNOME 1.0" \

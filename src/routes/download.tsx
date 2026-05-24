@@ -90,7 +90,7 @@ function DownloadPage() {
             <div>
               <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">1 · Compare the SHA-256 hash</p>
               <pre className="p-4 rounded-lg bg-foreground text-background text-xs font-mono overflow-x-auto"><code>sha256sum IndOS-1.0-gnome-amd64.iso{"\n"}sha256sum IndOS-1.0-xfce-amd64.iso</code></pre>
-              <p className="mt-3 text-xs text-muted-foreground">Expected values (also in <a href="https://github.com/iiamankumar/IndOS/releases" target="_blank" rel="noreferrer" className="text-accent hover:underline">SHA256SUMS</a>):</p>
+              <p className="mt-3 text-xs text-muted-foreground">Expected values (also in <a href="https://github.com/iiamankumar/indos-india-s-secure-os/releases" target="_blank" rel="noreferrer" className="text-accent hover:underline">SHA256SUMS</a>):</p>
               <ul className="mt-2 space-y-2 text-xs font-mono break-all">
                 <li><span className="text-muted-foreground">GNOME </span>9f3c1a7e4d2b8c6f0a91 e5d4c3b2a1f0e9d8c7b6 a5948372615049382716 05f4e3d2c1b0a9988776</li>
                 <li><span className="text-muted-foreground">XFCE  </span>2a8e4f1b6d9c3e7a0512 b4c6d8e0f1a3b5c7d9e1 f2a4b6c8d0e2f4a6b8c0 d2e4f6a8b0c2d4e6f8a0</li>
@@ -118,7 +118,7 @@ function DownloadPage() {
             <p className="mt-3 text-xs">
               <a href="/verify-indos.sh" download className="text-accent hover:underline">↓ Download verify-indos.sh</a>
               <span className="text-muted-foreground"> · </span>
-              <a href="https://github.com/iiamankumar/IndOS/blob/main/scripts/verify-indos.sh" target="_blank" rel="noreferrer" className="text-accent hover:underline">View source on GitHub</a>
+              <a href="https://github.com/iiamankumar/indos-india-s-secure-os/blob/main/scripts/verify-indos.sh" target="_blank" rel="noreferrer" className="text-accent hover:underline">View source on GitHub</a>
             </p>
           </div>
         </div>
@@ -128,7 +128,7 @@ function DownloadPage() {
 }
 
 function EditionDownload({ name, tag, size, file, accent }: { name: string; tag: string; size: string; file: string; accent?: boolean }) {
-  const base = `https://github.com/iiamankumar/IndOS/releases/download/v1.0/${file}`;
+  const base = `https://github.com/iiamankumar/indos-india-s-secure-os/releases/download/v1.0/${file}`;
   return (
     <div className={`p-8 rounded-2xl border ${accent ? "border-accent/40 shadow-soft" : "border-border"} bg-card`}>
       <div className="flex items-center justify-between mb-3">

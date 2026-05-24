@@ -92,7 +92,7 @@ Press contact — **press@indos.org**
 
 We welcome bug reports, translations and packaging help. Contributions to the **codebase** are accepted under the [Contributor License Agreement](./CLA.md), which grants the IndOS project the rights needed to keep the trademark and brand coherent.
 
-- [Open an issue](https://github.com/iiamankumar/IndOS/issues)
+- [Open an issue](https://github.com/iiamankumar/indos-india-s-secure-os/issues)
 - [Join the community](https://indos.org/community)
 - [Read the docs](https://indos.org/docs)
 

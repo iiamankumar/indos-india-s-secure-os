@@ -24,7 +24,7 @@ function Contact() {
     // Route to GitHub Issues with prefilled body
     const body = encodeURIComponent(`From: ${form.name} <${form.email}>\nTopic: ${form.topic}\n\n${form.message}`);
     const title = encodeURIComponent(`[${form.topic}] ${form.message.slice(0, 60)}`);
-    window.open(`https://github.com/iiamankumar/IndOS/issues/new?title=${title}&body=${body}`, "_blank");
+    window.open(`https://github.com/iiamankumar/indos-india-s-secure-os/issues/new?title=${title}&body=${body}`, "_blank");
     setSent(true);
   };
 
@@ -41,7 +41,7 @@ function Contact() {
       <section className="max-w-5xl mx-auto px-5 sm:px-8 py-10 grid lg:grid-cols-5 gap-8">
         <div className="lg:col-span-2 space-y-4">
           <ContactCard icon={Mail} label="Email" value="hello@indos.in" href="mailto:hello@indos.in" />
-          <ContactCard icon={Github} label="GitHub Issues" value="iiamankumar/IndOS" href="https://github.com/iiamankumar/IndOS/issues" />
+          <ContactCard icon={Github} label="GitHub Issues" value="iiamankumar/indos-india-s-secure-os" href="https://github.com/iiamankumar/indos-india-s-secure-os/issues" />
           <ContactCard icon={Send} label="Telegram" value="Join the chat" href="https://t.me/" />
         </div>
 

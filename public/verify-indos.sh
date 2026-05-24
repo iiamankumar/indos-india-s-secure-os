@@ -19,7 +19,7 @@
 
 set -euo pipefail
 
-RELEASE_URL="${INDOS_RELEASE_URL:-https://github.com/iiamankumar/IndOS/releases/download/v1.0}"
+RELEASE_URL="${INDOS_RELEASE_URL:-https://github.com/iiamankumar/indos-india-s-secure-os/releases/download/v1.0}"
 KEY_FPR="5C2E9B4F8A1D7E630F2C4B89D6A17F35E908C124"
 KEYSERVER="${INDOS_KEYSERVER:-keyserver.ubuntu.com}"
 
@@ -75,7 +75,7 @@ bold "==> Verifying SHA-512"
 if command -v cosign >/dev/null 2>&1; then
   bold "==> Verifying SLSA provenance attestation (cosign)"
   cosign verify-blob-attestation \
-    --certificate-identity-regexp "https://github.com/iiamankumar/IndOS/.*" \
+    --certificate-identity-regexp "https://github.com/iiamankumar/indos-india-s-secure-os/.*" \
     --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
     --type slsaprovenance \
     --bundle "$RELEASE_URL/$(basename "$ISO").intoto.jsonl" \

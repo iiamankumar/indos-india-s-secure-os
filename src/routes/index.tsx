@@ -109,7 +109,7 @@ function Home() {
           <Link to="/community" className="px-6 py-3.5 rounded-md bg-accent text-accent-foreground font-semibold">
             Join the community
           </Link>
-          <a href="https://github.com/iiamankumar/IndOS" target="_blank" rel="noreferrer" className="px-6 py-3.5 rounded-md border border-border bg-card font-semibold hover:bg-muted inline-flex items-center gap-2">
+          <a href="https://github.com/iiamankumar/indos-india-s-secure-os" target="_blank" rel="noreferrer" className="px-6 py-3.5 rounded-md border border-border bg-card font-semibold hover:bg-muted inline-flex items-center gap-2">
             <Github size={18} /> Star on GitHub
           </a>
         </div>

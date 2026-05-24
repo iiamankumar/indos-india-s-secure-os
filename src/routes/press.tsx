@@ -24,7 +24,7 @@ const LONG_BOILERPLATE = `IndOS is a free and open-source desktop operating syst
 
 Out of the box, IndOS includes 22 Indian languages, the Ollama AI runtime with TinyLlama for fully offline AI, and curated integrations for UPI, DigiLocker and Aarogya Setu. Security is built in from the kernel up: full-disk encryption with LUKS2, mandatory access control with AppArmor, a default-deny firewall, signed reproducible builds, SBOM and SLSA build attestations, and zero telemetry of any kind.
 
-IndOS is released under GPL v3 and developed in the open at github.com/iiamankumar/IndOS.`;
+IndOS is released under GPL v3 and developed in the open at github.com/iiamankumar/indos-india-s-secure-os.`;
 
 const COLORS = [
   { name: "Saffron", hex: "#E8853A", token: "--saffron", role: "Primary accent" },
@@ -61,7 +61,7 @@ function PressKit() {
         </div>
         <p className="mt-4 text-xs text-muted-foreground">
           Maintain at least 16 px clear space around the logo. Don’t rotate, recolor or add effects.
-          Vector source: <a className="text-accent hover:underline" href="https://github.com/iiamankumar/IndOS/tree/main/brand" target="_blank" rel="noreferrer">/brand on GitHub</a>.
+          Vector source: <a className="text-accent hover:underline" href="https://github.com/iiamankumar/indos-india-s-secure-os/tree/main/brand" target="_blank" rel="noreferrer">/brand on GitHub</a>.
         </p>
       </section>
 
@@ -112,7 +112,7 @@ function PressKit() {
             ["License", "GPL v3"],
             ["Editions", "GNOME · XFCE"],
             ["Languages", "22 Indian languages"],
-            ["Repository", "github.com/iiamankumar/IndOS"],
+            ["Repository", "github.com/iiamankumar/indos-india-s-secure-os"],
             ["Press contact", "press@indos.org"],
           ].map(([k, v]) => (
             <div key={k} className="p-5 rounded-xl border border-border bg-card">

@@ -47,7 +47,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </nav>
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="https://github.com/iiamankumar/IndOS"
+              href="https://github.com/iiamankumar/indos-india-s-secure-os"
               target="_blank"
               rel="noreferrer"
               className="text-sm font-medium text-foreground/75 hover:text-foreground"
@@ -122,7 +122,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           <div>
             <h4 className="font-semibold text-sm mb-3">Connect</h4>
             <ul className="space-y-2 text-sm">
-              <li><a className="text-muted-foreground hover:text-accent" href="https://github.com/iiamankumar/IndOS" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a className="text-muted-foreground hover:text-accent" href="https://github.com/iiamankumar/indos-india-s-secure-os" target="_blank" rel="noreferrer">GitHub</a></li>
               <li><a className="text-muted-foreground hover:text-accent" href="https://t.me/" target="_blank" rel="noreferrer">Telegram</a></li>
               <li><Link className="text-muted-foreground hover:text-accent" to="/community">Community Forum</Link></li>
               <li><Link className="text-muted-foreground hover:text-accent" to="/contact">Contact</Link></li>

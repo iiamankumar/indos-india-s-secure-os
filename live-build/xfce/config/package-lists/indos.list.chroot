@@ -1,0 +1,38 @@
+# IndOS XFCE edition — lightweight base
+ubuntu-standard
+xubuntu-core
+xfce4
+xfce4-goodies
+lightdm
+lightdm-gtk-greeter
+thunar
+xfce4-terminal
+firefox
+abiword
+gnumeric
+# India-Stack & locale
+language-pack-hi
+language-pack-bn
+language-pack-ta
+language-pack-te
+language-pack-mr
+language-pack-gu
+language-pack-kn
+language-pack-ml
+language-pack-pa
+language-pack-or
+language-pack-as
+language-pack-ur
+fonts-indic
+fonts-noto
+ibus
+ibus-m17n
+# Security
+ufw
+apparmor
+apparmor-profiles
+cryptsetup
+# Live system
+live-boot
+live-config
+live-config-systemd

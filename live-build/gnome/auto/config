@@ -1,0 +1,26 @@
+#!/bin/sh
+# IndOS GNOME edition — live-build auto/config
+# Run by the GitHub Actions workflow via `lb config`.
+set -e
+
+lb config noauto \
+    --mode debian \
+    --distribution noble \
+    --archive-areas "main restricted universe multiverse" \
+    --parent-distribution noble \
+    --parent-archive-areas "main restricted universe multiverse" \
+    --mirror-bootstrap http://archive.ubuntu.com/ubuntu/ \
+    --mirror-chroot http://archive.ubuntu.com/ubuntu/ \
+    --mirror-binary http://archive.ubuntu.com/ubuntu/ \
+    --debian-installer false \
+    --apt-recommends true \
+    --binary-images iso-hybrid \
+    --architectures amd64 \
+    --linux-flavours generic \
+    --bootloaders "syslinux,grub-efi" \
+    --iso-application "IndOS" \
+    --iso-publisher "IndOS Project; https://indos.org; press@indos.org" \
+    --iso-volume "IndOS GNOME 1.0" \
+    --memtest none \
+    --win32-loader false \
+    "${@}"

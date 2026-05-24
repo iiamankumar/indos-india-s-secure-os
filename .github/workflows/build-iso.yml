@@ -1,0 +1,143 @@
+name: Build IndOS ISO
+
+# Builds an Ubuntu 24.04-based IndOS ISO (GNOME + XFCE editions) using
+# live-build, signs the SHA256SUMS with the IndOS release GPG key, and
+# uploads everything to the GitHub Release that triggered the workflow.
+#
+# Triggers:
+#   - push of a tag matching v*  (e.g. v1.0, v1.0.1)
+#   - manual dispatch (for dry runs)
+#
+# Required repository secrets:
+#   GPG_PRIVATE_KEY   ASCII-armored IndOS release signing key (private)
+#   GPG_PASSPHRASE    passphrase for that key
+#   GPG_KEY_ID        long key id / fingerprint used to sign (e.g. 5C2E9B4F...)
+#
+# Notes:
+#   - Runs on ubuntu-24.04 (matches the LTS base we derive from).
+#   - Uses a matrix so GNOME and XFCE build in parallel.
+#   - The live-build config lives in ./live-build/<edition>/ in this repo;
+#     create it with `lb config` if it does not exist yet.
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version label (e.g. 1.0) — used in filenames"
+        required: true
+        default: "1.0-dev"
+
+permissions:
+  contents: write   # needed to upload release assets
+
+jobs:
+  build:
+    name: Build ${{ matrix.edition }} ISO
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        edition: [gnome, xfce]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Free up disk space
+        # live-build needs ~25 GB scratch; default GH runners have ~14 GB free
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc \
+                      /opt/hostedtoolcache/CodeQL /usr/local/share/boost
+          sudo apt-get clean
+          df -h
+
+      - name: Install live-build toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            live-build debootstrap squashfs-tools xorriso isolinux \
+            syslinux-common grub-pc-bin grub-efi-amd64-bin mtools dosfstools \
+            gpg
+
+      - name: Resolve version label
+        id: ver
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=${{ github.event.inputs.version }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build ISO with live-build
+        working-directory: live-build/${{ matrix.edition }}
+        run: |
+          sudo lb clean --purge
+          sudo lb config
+          sudo lb build 2>&1 | tee build.log
+          # live-build outputs live-image-amd64.hybrid.iso
+          ISO_NAME="IndOS-${{ steps.ver.outputs.version }}-${{ matrix.edition }}-amd64.iso"
+          sudo mv live-image-amd64.hybrid.iso "../../$ISO_NAME"
+          echo "ISO_NAME=$ISO_NAME" >> "$GITHUB_ENV"
+
+      - name: Generate checksums
+        run: |
+          sha256sum "$ISO_NAME" | tee -a SHA256SUMS
+          sha512sum "$ISO_NAME" | tee -a SHA512SUMS
+
+      - name: Import GPG signing key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf || true
+          gpgconf --kill gpg-agent || true
+
+      - name: Sign checksums and ISO
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+        run: |
+          gpg --batch --yes --pinentry-mode loopback \
+              --passphrase "$GPG_PASSPHRASE" \
+              --local-user "$GPG_KEY_ID" \
+              --detach-sign --armor \
+              --output "$ISO_NAME.sig" "$ISO_NAME"
+          gpg --batch --yes --pinentry-mode loopback \
+              --passphrase "$GPG_PASSPHRASE" \
+              --local-user "$GPG_KEY_ID" \
+              --detach-sign --armor \
+              --output SHA256SUMS.gpg SHA256SUMS
+
+      - name: Upload build artifacts (dispatch runs only)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: indos-${{ matrix.edition }}-${{ steps.ver.outputs.version }}
+          path: |
+            ${{ env.ISO_NAME }}
+            ${{ env.ISO_NAME }}.sig
+            SHA256SUMS
+            SHA256SUMS.gpg
+            SHA512SUMS
+          retention-days: 7
+
+      - name: Attach assets to GitHub Release (tag pushes)
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: IndOS ${{ steps.ver.outputs.version }}
+          tag_name: ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            ${{ env.ISO_NAME }}
+            ${{ env.ISO_NAME }}.sig
+            SHA256SUMS
+            SHA256SUMS.gpg
+            SHA512SUMS

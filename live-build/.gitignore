@@ -1,0 +1,12 @@
+# live-build scratch output — never commit build artifacts
+cache/
+chroot/
+binary/
+.build/
+*.iso
+*.img
+*.log
+*.contents
+*.files
+*.packages
+*.packages.live

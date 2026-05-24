@@ -1,0 +1,167 @@
+IndOS Source-Available License 1.0
+Copyright (c) 2026 Aman Kumar and the IndOS Project contributors.
+All rights reserved.
+
+This license governs use of the accompanying software and associated assets
+(the "Software"), including but not limited to source code, build scripts,
+documentation, website content, logos, names, color palettes and other brand
+assets contained in this repository.
+
+By downloading, installing, running, copying or otherwise using the Software,
+you ("You") agree to the terms below. If You do not agree, do not use the
+Software.
+
+------------------------------------------------------------------------------
+1. DEFINITIONS
+------------------------------------------------------------------------------
+
+"Licensor" means Aman Kumar and the IndOS Project contributors.
+
+"Official Distribution" means an unmodified binary image, installer, package
+or source archive that has been built and published by the Licensor and is
+distributed bit-for-bit identically to that published artifact.
+
+"Derivative Work" means any work that is based on, derived from, modified
+from, adapted from, or contains a substantial portion of the Software, in
+source or binary form, including any fork, rebrand, repackage, remix or
+"powered by" distribution.
+
+"Brand Assets" means the names "IndOS" and "Bharat OS", the IndOS logo, the
+IndOS tricolor color palette and design system, and any trademarks, service
+marks, trade names or trade dress associated with the IndOS Project.
+
+------------------------------------------------------------------------------
+2. PERMITTED USE
+------------------------------------------------------------------------------
+
+Subject to Your continuous compliance with this license, the Licensor grants
+You a worldwide, royalty-free, non-exclusive, non-transferable, revocable
+license to:
+
+  (a) install and run the Software, for any lawful purpose, on any number of
+      devices, by individuals, schools, businesses, non-profits and
+      governments;
+
+  (b) read, study, audit, compile and test the source code, for any lawful
+      purpose, including security research and personal modification used
+      privately within Your own organisation;
+
+  (c) redistribute the Software, in source or binary form, ONLY as an
+      Official Distribution, unmodified, complete and with this license file
+      intact;
+
+  (d) make and use private modifications of the Software internally within
+      Your organisation, provided that any such modified copy is not
+      distributed, hosted, sold, sublicensed or otherwise made available to
+      any third party.
+
+------------------------------------------------------------------------------
+3. RESTRICTIONS — NOT PERMITTED
+------------------------------------------------------------------------------
+
+You may NOT, without prior written permission from the Licensor:
+
+  (a) publish, distribute, sublicense, sell, host, mirror or otherwise make
+      available any Derivative Work of the Software, in source or binary
+      form, to any third party;
+
+  (b) create, publish or promote any operating system, distribution, fork,
+      rebrand, repackage, installer image or "powered by" product that is
+      based on, derived from, or substantially similar in look, feel,
+      structure or branding to the Software;
+
+  (c) use any of the Brand Assets, in whole or in part, in or in connection
+      with any product, service, distribution, domain name, social media
+      handle, marketing material or any other use, except for the limited
+      purpose of accurately and factually referring to the unmodified IndOS
+      project (for example: "compatible with IndOS", "runs on IndOS",
+      "tested on IndOS");
+
+  (d) remove, obscure, alter or replace any copyright, trademark,
+      attribution or license notice in the Software;
+
+  (e) use the Software to develop, train, fine-tune, evaluate or improve any
+      competing operating system, distribution or product that substantially
+      replicates the design, structure or branding of the Software;
+
+  (f) use the Software for any purpose that is unlawful under the laws of
+      the Republic of India or of Your jurisdiction.
+
+------------------------------------------------------------------------------
+4. CONTRIBUTIONS
+------------------------------------------------------------------------------
+
+Any contribution intentionally submitted by You for inclusion in the Software
+is licensed to the Licensor under the terms of the Contributor License
+Agreement (CLA.md) included in this repository, without any additional terms
+or conditions.
+
+------------------------------------------------------------------------------
+5. THIRD-PARTY COMPONENTS
+------------------------------------------------------------------------------
+
+The Software incorporates third-party components — including Ubuntu, the
+Linux kernel, GNOME, XFCE, Ollama and many others — which are governed by
+their own respective licenses (GPL v2/v3, LGPL, MIT, Apache 2.0, BSD, etc.).
+Nothing in this license overrides or restricts Your rights under those
+upstream licenses with respect to those third-party components themselves.
+This license applies only to the original work of the IndOS Project: its
+configuration, integration, branding, design, documentation and original
+source code.
+
+------------------------------------------------------------------------------
+6. TERMINATION
+------------------------------------------------------------------------------
+
+This license terminates automatically and immediately if You breach any of
+its terms. Upon termination, You must cease all use and distribution of the
+Software and destroy all copies in Your possession or control. Sections 3,
+5, 7, 8 and 9 survive termination.
+
+------------------------------------------------------------------------------
+7. NO TRADEMARK LICENSE
+------------------------------------------------------------------------------
+
+Nothing in this license grants You any right, title or interest in or to any
+Brand Asset. All goodwill arising from any use of the Brand Assets shall
+inure solely to the benefit of the Licensor.
+
+------------------------------------------------------------------------------
+8. DISCLAIMER OF WARRANTY
+------------------------------------------------------------------------------
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. YOU ASSUME ALL
+RISK ARISING FROM YOUR USE OF THE SOFTWARE.
+
+------------------------------------------------------------------------------
+9. LIMITATION OF LIABILITY
+------------------------------------------------------------------------------
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE
+LICENSOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY
+OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS OF DATA, LOSS OF PROFITS OR
+BUSINESS INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE OF THE SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+------------------------------------------------------------------------------
+10. GOVERNING LAW
+------------------------------------------------------------------------------
+
+This license shall be governed by and construed in accordance with the laws
+of the Republic of India, without regard to its conflict-of-laws principles.
+The courts of New Delhi, India shall have exclusive jurisdiction over any
+dispute arising out of or in connection with this license.
+
+------------------------------------------------------------------------------
+11. GRANTS BEYOND THIS LICENSE
+------------------------------------------------------------------------------
+
+For permissions beyond the scope of this license — including derivative
+distributions, OEM bundling, commercial trademark use or custom enterprise
+terms — contact: legal@indos.org
+
+------------------------------------------------------------------------------
+END OF LICENSE
+------------------------------------------------------------------------------
